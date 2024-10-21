@@ -79,4 +79,19 @@ public class NextDayTest {
 		// assert
 		assertEquals(expected, result);
 	}
+
+	@Test
+	@DisplayName("Case 31/12/2018")
+	public void testNextDayOfD31M12Y2018() {
+		// arrange
+		NextDay nextDay = new NextDay();
+		int day = 31;
+		int month = 12;
+		int year = 2018;
+		String expected = "1/1/2019";
+		// action
+		String result = nextDay.getNextDay(day, month, year);
+		// assert
+		assertEquals(expected, result);
+	}
 }
