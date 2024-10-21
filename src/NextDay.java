@@ -1,10 +1,8 @@
 public class NextDay {
 	public String getNextDay(int day, int month, int year) {
 		final String CONCAT_STR = "/";
-		int nextDay = day;
+		int nextDay;
 		int nextMonth = month;
-		int nextYear = year;
-
 		switch (month) {
 			case 1:
 			case 3:
@@ -15,10 +13,8 @@ public class NextDay {
 				if (day == 31) {
 					nextDay = 1;
 					nextMonth = month + 1;
-				} else {
-					nextDay = day + 1;
+					break;
 				}
-				break;
 			case 4:
 			case 6:
 			case 9:
@@ -26,20 +22,33 @@ public class NextDay {
 				if (day == 30) {
 					nextDay = 1;
 					nextMonth = month + 1;
-				} else {
-					nextDay = day + 1;
+					break;
 				}
-				break;
 			case 2:
-				if (day == 28) {
-					nextDay = 1;
-					nextMonth = month + 1;
+				if (isLeapYear(year)) {
+					if (day == 29) {
+						nextDay = 1;
+						nextMonth = month + 1;
+						break;
+					}
 				} else {
-					nextDay = day + 1;
+					if (day == 28) {
+						nextDay = 1;
+						nextMonth = month + 1;
+						break;
+					}
 				}
-				break;
+			default:
+				nextDay = day + 1;
 		}
+		return nextDay + CONCAT_STR + nextMonth + CONCAT_STR + year;
+	}
 
-		return nextDay + CONCAT_STR + nextMonth + CONCAT_STR + nextYear;
+	private boolean isLeapYear(int year) {
+		if (year % 400 == 0) {
+			return true;
+		} else if (year % 100 == 0) {
+			return false;
+		} else return year % 4 == 0;
 	}
 }
