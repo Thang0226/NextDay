@@ -1,0 +1,22 @@
+import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class NextDayTest {
+
+	@Test
+	@DisplayName("Case 1/1/2018")
+	public void testNextDayOfD1M1Y2018() {
+		// arrange
+		NextDay nextDay = new NextDay();
+		int day = 1;
+		int month = 1;
+		int year = 2018;
+		String expected = "2/1/2018";
+		// action
+		String result = nextDay.getNextDay(day, month, year);
+		// assert
+		assertEquals(expected, result);
+	}
+}
