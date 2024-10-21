@@ -29,6 +29,15 @@ public class NextDay {
 				} else {
 					nextDay = day + 1;
 				}
+				break;
+			case 2:
+				if (day == 28) {
+					nextDay = 1;
+					nextMonth = month + 1;
+				} else {
+					nextDay = day + 1;
+				}
+				break;
 		}
 
 		return nextDay + CONCAT_STR + nextMonth + CONCAT_STR + nextYear;
